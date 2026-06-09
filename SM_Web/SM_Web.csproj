@@ -6,5 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="Views\Shared\_LayoutExterno.cshtml" />
+  </ItemGroup>
+
 </Project>
     
