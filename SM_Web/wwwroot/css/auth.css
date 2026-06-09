@@ -13,7 +13,7 @@ body {
     }
 
     #auth #auth-left {
-        padding: 5rem 8rem
+        padding: 2rem 8rem
     }
 
         #auth #auth-left .auth-title {
@@ -28,11 +28,11 @@ body {
         }
 
         #auth #auth-left .auth-logo {
-            margin-bottom: 7rem
+            margin-bottom: 2rem
         }
 
             #auth #auth-left .auth-logo img {
-                height: 2rem
+                height: 9rem
             }
 
 @media screen and (max-width:767px) {
