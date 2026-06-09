@@ -11,6 +11,16 @@ namespace SM_Web.Controllers
             return View();
         }
 
-       
+        public IActionResult Registro()
+        {
+            return View();
+        }
+
+        public IActionResult RecuperarAcceso()
+        {
+            return View();
+        }
+
+
     }
 }
