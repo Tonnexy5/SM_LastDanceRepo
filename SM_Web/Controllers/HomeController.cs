@@ -4,8 +4,10 @@ using System.Diagnostics;
 
 namespace SM_Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IHttpClientFactory _http) : Controller
     {
+        
+
         public IActionResult Index()
         {
             return View();
@@ -22,6 +24,16 @@ namespace SM_Web.Controllers
         [HttpPost]
         public IActionResult Registro(UsuarioModel model)
         {
+
+            using (var client = _http.CreateClient())
+            {
+
+                var urlApi = "https://localhost:7065/api/Home/RegistroAPI";
+                var response = client.PostAsJsonAsync(urlApi, model).Result;
+
+            }
+
+            //https://localhost:7065
             return View();
         }
         #endregion
