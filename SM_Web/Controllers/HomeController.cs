@@ -28,7 +28,7 @@ namespace SM_Web.Controllers
             using (var client = _http.CreateClient())
             {
 
-                var urlApi = "https://localhost:7065/api/Home/RegistroAPI";
+                var urlApi = "https://localhost:7096/api/Home/RegistroAPI";
                 var response = client.PostAsJsonAsync(urlApi, model).Result;
 
             }
