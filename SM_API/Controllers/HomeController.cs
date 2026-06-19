@@ -8,12 +8,12 @@ namespace SM_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HomeController : ControllerBase
+    public class HomeController(IConfiguration _databasekey) : ControllerBase
     {
         [HttpPost("RegistroAPI")]
         public IActionResult RegistroAPI(UsuarioModel model)
         {
-            using var context = new SqlConnection("Server=(localdb)\\TonyDB;Database=SM_BD;Integrated Security=True;  TrustServerCertificate=True;");
+            using var context = new SqlConnection(_databasekey["ConnectionStringsApi:DefaultConnection"]);
             
 
                 var parameters = new DynamicParameters();

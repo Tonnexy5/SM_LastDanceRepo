@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace SM_Web.Controllers
 {
-    public class HomeController(IHttpClientFactory _http) : Controller
+    public class HomeController(IHttpClientFactory _http, IConfiguration _config) : Controller
     {
         
 
@@ -28,7 +28,8 @@ namespace SM_Web.Controllers
             using (var client = _http.CreateClient())
             {
 
-                var urlApi = "https://localhost:7096/api/Home/RegistroAPI";
+                var urlApi = _config["ConnectionStringsWeb:urlApi"] + "/api/Home/RegistroAPI";
+                   ;
                 var response = client.PostAsJsonAsync(urlApi, model).Result;
 
             }
