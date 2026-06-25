@@ -13,18 +13,22 @@ namespace SM_API.Controllers
         [HttpPost("RegistroAPI")]
         public IActionResult RegistroAPI(UsuarioModel model)
         {
-            using var context = new SqlConnection(_databasekey["ConnectionStringsApi:DefaultConnection"]);
+
             
+
+                using var context = new SqlConnection(_databasekey["ConnectionStringsApi:DefaultConnection"]);
+
 
                 var parameters = new DynamicParameters();
                 parameters.Add("@identificacion", model.identificacion);
                 parameters.Add("@nombre", model.nombre);
                 parameters.Add("@correoElectronico", model.correoElectronico);
-                parameters.Add("@Contrasenna", model.Contrasenna);
+                //parameters.Add("@Contrasenna", model.Contrasenna);
 
                 var response = context.Execute("spRegistrarUsuario", parameters);
                 return Ok();
-
+            
+           
         }
 
     }
