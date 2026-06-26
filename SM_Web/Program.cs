@@ -9,15 +9,15 @@ builder.Services.AddHttpClient();
 var app = builder.Build();
 
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
+
+app.UseExceptionHandler("/Error/CapturarError");
    
-    app.UseHsts();
-}
-//app.UseExceptionHandler("/api/Error/RegistrarError");
+app.UseHsts();
+
+
 
 app.UseHttpsRedirection();
+
 app.UseRouting();
 
 app.UseAuthorization();
