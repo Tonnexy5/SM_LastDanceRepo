@@ -11,24 +11,51 @@ namespace SM_API.Controllers
     public class HomeController(IConfiguration _databasekey) : ControllerBase
     {
         [HttpPost("RegistroAPI")]
-        public IActionResult RegistroAPI(UsuarioModel model)
+        public IActionResult RegistroAPI(UsuarioRegistroModel model)
         {
 
+            using var context = new SqlConnection(_databasekey["ConnectionStringsApi:DefaultConnection"]);
+
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@identificacion", model.identificacion);
+            parameters.Add("@nombre", model.nombre);
+            parameters.Add("@correoElectronico", model.correoElectronico);
+            parameters.Add("@Contrasenna", model.Contrasenna);
+
+            var response = context.Execute("spRegistrarUsuario", parameters);
+            return Ok();
+
+
+        }
+
+
+        [HttpPost("IniciarSesionAPI")]
+        public IActionResult IniciarSesionAPI(UsuarioLoginModel model)
+        {
+
+            using var context = new SqlConnection(_databasekey["ConnectionStringsApi:DefaultConnection"]);
+
+
+            var parameters = new DynamicParameters();
             
+            parameters.Add("@correoElectronico", model.correoElectronico);
+            parameters.Add("@Contrasenna", model.Contrasenna);
 
-                using var context = new SqlConnection(_databasekey["ConnectionStringsApi:DefaultConnection"]);
+            var response = context.QueryFirstOrDefault<DatoUsuarioResponseModel>("spIniciarSesionUsuario", parameters);
 
 
-                var parameters = new DynamicParameters();
-                parameters.Add("@identificacion", model.identificacion);
-                parameters.Add("@nombre", model.nombre);
-                parameters.Add("@correoElectronico", model.correoElectronico);
-                //parameters.Add("@Contrasenna", model.Contrasenna);
+            if (response != null)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound("Usuario no encontrado o credenciales incorrectas.");
+            }
 
-                var response = context.Execute("spRegistrarUsuario", parameters);
-                return Ok();
-            
-           
+
+
         }
 
     }
