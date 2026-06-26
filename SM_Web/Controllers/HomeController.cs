@@ -36,7 +36,7 @@ namespace SM_Web.Controllers
 
             }
 
-            //https://localhost:7065
+            
             return View();
         }
         #endregion
