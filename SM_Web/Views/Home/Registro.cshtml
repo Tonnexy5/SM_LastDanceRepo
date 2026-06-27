@@ -12,7 +12,11 @@
                     <div class="auth-logo">
                 <a asp-action="Index" asp-controller="Home"><img src="~/images/logo.png" alt="Logo"></a>
                     </div>
-                    <h1 class="auth-title">Sign Up</h1>
+
+
+            @if (ViewBag.Mensaje != null) { <div class="alert alert-danger text-center">@ViewBag.Mensaje</div> }
+
+                    <h1 class="auth-title">Registrar Usuario</h1>
                     
 
                     <form asp-action="Registro" asp-controller="Home" method="post">

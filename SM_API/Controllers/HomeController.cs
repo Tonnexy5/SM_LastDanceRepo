@@ -24,7 +24,20 @@ namespace SM_API.Controllers
             parameters.Add("@Contrasenna", model.Contrasenna);
 
             var response = context.Execute("spRegistrarUsuario", parameters);
-            return Ok();
+
+            if (response > 0)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest("Error al registrar el usuario.");
+
+            }
+
+
+
+
 
 
         }
