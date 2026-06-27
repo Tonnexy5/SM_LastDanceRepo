@@ -22,7 +22,7 @@
             <h1 class="auth-title">Iniciar Sesion</h1>
             <p class="auth-subtitle mb-5">Aqui inicias sesion bro</p>
 
-            <form asp-action="Index" asp-controller="Home" method="post">
+            <form id="IndexForm" asp-action="Index" asp-controller="Home" method="post">
                 <div class="form-group position-relative has-icon-left mb-4">
                     <input asp-for="correoElectronico" type="text" class="form-control form-control-xl" placeholder="Correo Electronico">
                     <div class="form-control-icon">
@@ -54,3 +54,6 @@
     </div>
 </div>
 </div>
+
+
+<script src="~/js/index.js"></script>

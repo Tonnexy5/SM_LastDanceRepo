@@ -19,7 +19,7 @@
                     <h1 class="auth-title">Registrar Usuario</h1>
                     
 
-                    <form asp-action="Registro" asp-controller="Home" method="post">
+                    <form id= "RegistroForm" asp-action="Registro" asp-controller="Home" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input asp-for="identificacion" type="text" class="form-control form-control-xl" placeholder="Identificacion">
                             <div class="form-control-icon">
@@ -62,3 +62,4 @@
         </div>
     </div>
 
+<script src="~/js/registro.js"></script>
