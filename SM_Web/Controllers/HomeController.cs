@@ -13,6 +13,10 @@ namespace SM_Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+
+            var cero = 0;
+            var resultado = 10 / cero;
+
             return View();
         }
 
@@ -31,6 +35,9 @@ namespace SM_Web.Controllers
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
+
+                    HttpContext.Session.SetString("Autenticado", "1");
+
                     return RedirectToAction("Principal", "Home");
                 }
                 else if (response.StatusCode == HttpStatusCode.NotFound)

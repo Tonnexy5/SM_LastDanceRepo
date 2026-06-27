@@ -3,12 +3,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-
+//Dependenciasssssss
 builder.Services.AddHttpClient();
+builder.Services.AddSession();
+
 
 var app = builder.Build();
 
-
+app.UseSession();
 
 app.UseExceptionHandler("/Error/CapturarError");
    
