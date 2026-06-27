@@ -14,8 +14,7 @@ namespace SM_Web.Controllers
         public IActionResult Index()
         {
 
-            var cero = 0;
-            var resultado = 10 / cero;
+           
 
             return View();
         }
@@ -105,6 +104,18 @@ namespace SM_Web.Controllers
             }
 
         }
+        #endregion
+
+
+        #region Cerrar Sesión
+
+        [HttpGet]
+        public IActionResult Salir()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         #endregion
 
         public IActionResult RecuperarAcceso()

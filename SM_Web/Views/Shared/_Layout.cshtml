@@ -13,6 +13,93 @@
     <link rel="stylesheet" href="~/css/perfect-scrollbar.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/bootstrap-icons.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/app.css" asp-append-version="true">
+
+    <style>
+        /* User Dropdown Styles */
+        .user-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .user-dropdown-btn:hover {
+            border-color: #667bc6;
+            box-shadow: 0 4px 12px rgba(102, 123, 198, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .user-dropdown-btn i {
+            font-size: 1.3rem;
+            color: #667bc6;
+        }
+
+        .user-dropdown-btn .dropdown-toggle::after {
+            margin-left: 0.5rem;
+        }
+
+        .dropdown-menu {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            animation: slideDown 0.2s ease;
+        }
+
+keyframes slideDown { ... }
+
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f5f7fa;
+            color: #667bc6;
+            border-left: 3px solid #667bc6;
+            padding-left: calc(1rem - 3px);
+        }
+
+        .dropdown-item i {
+            color: #667bc6;
+            font-size: 1.1rem;
+            min-width: 24px;
+        }
+
+        .dropdown-item span {
+            margin-left: 0.75rem;
+        }
+
+        .dropdown-divider {
+            margin: 0.5rem 0;
+            background-color: #e0e0e0;
+        }
+
+        header {
+            padding: 1rem 2rem;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,9 +144,36 @@
 
         <div id="main">
             <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
+                <div class="d-flex justify-content-end align-items-center pe-3">
+                    <!-- User Dropdown Menu -->
+                    <div class="dropdown">
+                        <button class="user-dropdown-btn dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Mi Cuenta</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Profile")">
+                                    <i class="bi bi-person"></i>
+                                    <span>Perfil</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Security")">
+                                    <i class="bi bi-shield-lock"></i>
+                                    <span>Seguridad</span>
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Salir</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </header>
             @RenderBody()
           
